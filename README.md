@@ -1,4 +1,4 @@
-# demo_ch_1
+# Learn Flutter in 30 Days
 
 A new Flutter project.
 
