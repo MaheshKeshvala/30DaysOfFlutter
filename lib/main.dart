@@ -1,6 +1,7 @@
 import 'package:demo_ch_1/pages/home_page.dart';
 import 'package:demo_ch_1/pages/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,11 +17,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
-      darkTheme:
-          ThemeData(brightness: Brightness.light, primarySwatch: Colors.purple),
-      theme:
-          ThemeData(brightness: Brightness.light, primarySwatch: Colors.blue),
-      initialRoute: "/home",
+      darkTheme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.purple,
+          fontFamily: GoogleFonts.lato().fontFamily,
+          primaryTextTheme: GoogleFonts.latoTextTheme()),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.blue,
+          fontFamily: GoogleFonts.lato().fontFamily,
+          primaryTextTheme: GoogleFonts.latoTextTheme()),
+      initialRoute: "/",
       routes: {
         "/": (context) => LoginPage(),
         "/home": (context) => HomePage(),
