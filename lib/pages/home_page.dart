@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   int day = 30;
+
   String name = "Techno";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
