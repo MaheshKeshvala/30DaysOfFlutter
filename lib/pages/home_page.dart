@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(10, (index) => AppDataModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,14 +29,16 @@ class _HomePageState extends State<HomePage> {
       body: Material(
         child: Padding(
           padding: EdgeInsets.all(8.0),
-          child: ListView.builder(
-            itemCount: dummyList.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(
-                item: dummyList[index],
-              );
-            },
-          ),
+          child: AppDataModel.items != null && AppDataModel.items.isNotEmpty
+              ? ListView.builder(
+                  itemCount: AppDataModel.items.length,
+                  itemBuilder: (context, index) => ItemWidget(
+                    item: AppDataModel.items[index],
+                  ),
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
+                ),
         ),
       ),
       drawer: MyDrawer(),
@@ -45,9 +46,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void loadData() async {
+    await Future.delayed(Duration(seconds: 2));
     final appJson = await rootBundle.loadString("assets/files/app_data.json");
     final decodeData = jsonDecode(appJson);
     var productsData = decodeData["products"];
-    print(productsData);
+    AppDataModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
   }
 }
