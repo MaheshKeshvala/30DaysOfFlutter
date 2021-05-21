@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "Catalog App",
-          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Material(
