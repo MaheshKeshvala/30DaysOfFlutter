@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/widgets/drawer.dart';
 import 'package:demo_ch_1/widgets/item_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +12,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final dummyList = List.generate(10, (index) => AppDataModel.items[0]);
@@ -33,5 +42,12 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: MyDrawer(),
     );
+  }
+
+  void loadData() async {
+    final appJson = await rootBundle.loadString("assets/files/app_data.json");
+    final decodeData = jsonDecode(appJson);
+    var productsData = decodeData["products"];
+    print(productsData);
   }
 }
