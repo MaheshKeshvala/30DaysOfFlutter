@@ -1,4 +1,6 @@
+import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/widgets/drawer.dart';
+import 'package:demo_ch_1/widgets/item_widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -7,12 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int day = 30;
-
-  String name = "Techno";
-
   @override
   Widget build(BuildContext context) {
+    final dummyList = List.generate(10, (index) => AppDataModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -20,9 +19,15 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Material(
-        child: Center(
-          child: Container(
-            child: Text("My First Flutter App $day by $name"),
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: dummyList.length,
+            itemBuilder: (context, index) {
+              return ItemWidget(
+                item: dummyList[index],
+              );
+            },
           ),
         ),
       ),
