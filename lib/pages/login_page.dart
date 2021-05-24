@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:demo_ch_1/utils/routes.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,14 +31,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Login Page",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      backgroundColor: context.canvasColor,
       body: Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -99,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Material(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.blue,
+                  color: context.theme.buttonColor,
                   child: InkWell(
                     splashColor: Colors.lightGreen,
                     onTap: () => moveToHome(context),

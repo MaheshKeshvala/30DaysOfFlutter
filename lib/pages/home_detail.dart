@@ -16,9 +16,9 @@ class HomeDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Vx.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: Vx.mH8,
@@ -29,7 +29,7 @@ class HomeDetails extends StatelessWidget {
               child: "Add to cart".text.make(),
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all(MyTheme.darkBluishColor),
+                    MaterialStateProperty.all(context.theme.buttonColor),
                 shape: MaterialStateProperty.all(StadiumBorder()),
               ),
             ).wh(120, 50),
@@ -50,14 +50,11 @@ class HomeDetails extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
-                      item.name.text.xl4
-                          .color(MyTheme.darkBluishColor)
-                          .bold
-                          .make(),
+                      item.name.text.xl4.color(context.accentColor).bold.make(),
                       item.desc.text.xl.textStyle(context.captionStyle).make(),
                       8.heightBox,
                       "Erat aliquyam at no invidunt sit et no. Amet aliquyam labore no dolores dolor amet. Eirmod ipsum consetetur erat sadipscing magna diam est ipsum dolore.."
