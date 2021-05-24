@@ -28,14 +28,60 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Material(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(16.0),
           child: AppDataModel.items != null && AppDataModel.items.isNotEmpty
-              ? ListView.builder(
+              ? GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16),
+                  itemBuilder: (context, index) {
+                    final item = AppDataModel.items[index];
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      clipBehavior: Clip.antiAlias,
+                      child: GridTile(
+                        header: Container(
+                          child: Center(
+                            child: Text(
+                              item.name,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.lightBlue,
+                          ),
+                        ),
+                        child: Image.network(
+                          item.image,
+                          fit: BoxFit.contain,
+                          height: 50,
+                        ),
+                        footer: Container(
+                          child: Center(
+                            child: Text(
+                              "\$${item.price.toString()}",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.black26,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                   itemCount: AppDataModel.items.length,
-                  itemBuilder: (context, index) => ItemWidget(
-                    item: AppDataModel.items[index],
-                  ),
                 )
+              //ListView.builder(
+              //itemCount: AppDataModel.items.length,
+              //itemBuilder: (context, index) => ItemWidget(
+              //item: AppDataModel.items[index],
+              //),
+              //)
               : Center(
                   child: CircularProgressIndicator(),
                 ),

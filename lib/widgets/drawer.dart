@@ -44,6 +44,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              trailing: Icon(CupertinoIcons.square_arrow_right),
             ),
             Expanded(
               child: Divider(
@@ -63,6 +64,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              trailing: Icon(CupertinoIcons.square_arrow_right),
             ),
             Expanded(
               child: Divider(
@@ -82,6 +84,7 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              trailing: Icon(CupertinoIcons.square_arrow_up_on_square),
             ),
             Expanded(
               child: Divider(
