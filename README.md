@@ -1,4 +1,4 @@
-# demo_ch_1
+# Flutter Widgets Demo
 
 A new Flutter project.
 
