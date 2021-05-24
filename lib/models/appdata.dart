@@ -2,6 +2,11 @@ import 'dart:convert';
 
 class AppDataModel {
   static List<Item> items;
+
+  static Item getItemById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  static Item getItemByPosition(int position) => items[position];
 }
 
 class Item {

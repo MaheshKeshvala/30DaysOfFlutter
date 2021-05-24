@@ -1,6 +1,7 @@
 import 'package:demo_ch_1/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class MyDrawer extends StatelessWidget {
   final imageUrl =
@@ -10,7 +11,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.blue,
+        color: context.canvasColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -21,11 +22,11 @@ class MyDrawer extends StatelessWidget {
                 margin: EdgeInsets.zero,
                 accountName: Text(
                   "Mahesh Keshvala",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: context.theme.buttonColor),
                 ),
                 accountEmail: Text(
                   "Technolag@gmail.com",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: context.theme.buttonColor),
                 ),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(imageUrl),
@@ -35,74 +36,71 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(
                 CupertinoIcons.home,
-                color: Colors.white,
+                color: context.theme.buttonColor,
               ),
               title: Text(
                 "Home",
                 textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
               ),
-              trailing: Icon(CupertinoIcons.square_arrow_right),
+              trailing: Icon(
+                CupertinoIcons.square_arrow_right,
+                color: context.theme.buttonColor,
+              ),
             ),
             Expanded(
               child: Divider(
-                color: Colors.white,
+                color: context.accentColor,
                 height: 1,
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
-                color: Colors.white,
+                color: context.theme.buttonColor,
               ),
               title: Text(
                 "Profile",
                 textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
               ),
-              trailing: Icon(CupertinoIcons.square_arrow_right),
+              trailing: Icon(
+                CupertinoIcons.square_arrow_right,
+                color: context.theme.buttonColor,
+              ),
             ),
             Expanded(
               child: Divider(
-                color: Colors.white,
+                color: context.accentColor,
                 height: 1,
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.mail,
-                color: Colors.white,
+                color: context.theme.buttonColor,
               ),
               title: Text(
                 "Email",
                 textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
               ),
-              trailing: Icon(CupertinoIcons.square_arrow_up_on_square),
+              trailing: Icon(
+                CupertinoIcons.square_arrow_up_on_square,
+                color: context.theme.buttonColor,
+              ),
             ),
             Expanded(
               child: Divider(
-                color: Colors.white,
+                color: context.accentColor,
                 height: 1,
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.square_arrow_left,
-                color: Colors.white,
+                color: context.theme.buttonColor,
               ),
               title: Text(
                 "Logout",
                 textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
               ),
               onTap: () {
                 Navigator.pushNamed(context, MyRoutes.loginRoute);
@@ -110,7 +108,7 @@ class MyDrawer extends StatelessWidget {
             ),
             Expanded(
               child: Divider(
-                color: Colors.white,
+                color: context.accentColor,
                 height: 1,
               ),
             ),

@@ -1,7 +1,5 @@
 import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/pages/home_detail.dart';
-import 'package:demo_ch_1/utils/routes.dart';
-import 'package:demo_ch_1/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,7 +12,7 @@ class ListOfItem extends StatelessWidget {
       shrinkWrap: true,
       itemCount: AppDataModel.items.length,
       itemBuilder: (context, index) {
-        var item = AppDataModel.items[index];
+        var item = AppDataModel.getItemByPosition(index);
         return InkWell(
           child: CataLogItem(item: item),
           onTap: () {
