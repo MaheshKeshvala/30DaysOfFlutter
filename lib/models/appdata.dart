@@ -1,12 +1,18 @@
 import 'dart:convert';
 
 class AppDataModel {
+  static final cartmodel = AppDataModel._internal();
+
+  AppDataModel._internal();
+
+  factory AppDataModel() => cartmodel;
+
   static List<Item> items;
 
-  static Item getItemById(int id) =>
+  Item getItemById(int id) =>
       items.firstWhere((element) => element.id == id, orElse: null);
 
-  static Item getItemByPosition(int position) => items[position];
+  Item getItemByPosition(int position) => items[position];
 }
 
 class Item {

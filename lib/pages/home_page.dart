@@ -5,7 +5,6 @@ import 'package:demo_ch_1/home_widgets/catalog_list.dart';
 import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/utils/routes.dart';
 import 'package:demo_ch_1/widgets/drawer.dart';
-import 'package:demo_ch_1/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

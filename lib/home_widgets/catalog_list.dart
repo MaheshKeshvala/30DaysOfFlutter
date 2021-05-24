@@ -1,4 +1,5 @@
 import 'package:demo_ch_1/models/appdata.dart';
+import 'package:demo_ch_1/models/cart.dart';
 import 'package:demo_ch_1/pages/home_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -62,15 +63,7 @@ class CataLogItem extends StatelessWidget {
                     buttonPadding: Vx.mH8,
                     children: [
                       "\$${item.price}".text.bold.xl.make(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: "Add to card".text.make(),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              context.theme.buttonColor),
-                          shape: MaterialStateProperty.all(StadiumBorder()),
-                        ),
-                      ),
+                      AddtoCart(item: item)
                     ],
                   ),
                 ],
@@ -80,5 +73,38 @@ class CataLogItem extends StatelessWidget {
         ],
       ),
     ).color(context.cardColor).roundedLg.square(150).make().py12();
+  }
+}
+
+class AddtoCart extends StatefulWidget {
+  final Item item;
+  const AddtoCart({Key key, @required this.item})
+      : assert(item != null),
+        super(key: key);
+
+  @override
+  _AddtoCartState createState() => _AddtoCartState();
+}
+
+class _AddtoCartState extends State<AddtoCart> {
+  bool isAdded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final appDataModel = AppDataModel();
+        final cart = CartModel();
+        cart.appData = appDataModel;
+        cart.addItem(widget.item);
+        setState(() {});
+      },
+      child: isAdded ? Icon(Icons.done) : "Add to card".text.make(),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
+        shape: MaterialStateProperty.all(StadiumBorder()),
+      ),
+    );
   }
 }
