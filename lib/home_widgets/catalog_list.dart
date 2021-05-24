@@ -12,7 +12,7 @@ class ListOfItem extends StatelessWidget {
       shrinkWrap: true,
       itemCount: AppDataModel.items.length,
       itemBuilder: (context, index) {
-        var item = AppDataModel.getItemByPosition(index);
+        var item = AppDataModel.items[index];
         return InkWell(
           child: CataLogItem(item: item),
           onTap: () {
