@@ -1,4 +1,5 @@
 import 'package:demo_ch_1/models/cart.dart';
+import 'package:demo_ch_1/widgets/item_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -13,7 +14,7 @@ class CartPage extends StatelessWidget {
       backgroundColor: context.canvasColor,
       body: Column(
         children: [
-          CartListState().p32().expand(),
+          CartListState().p16().expand(),
           Divider(),
           CartTotal(),
         ],
@@ -68,16 +69,30 @@ class _CartListStateState extends State<CartListState> {
   final cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: cart.items.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: cart.items[index].name.text.make(),
-      ),
-    );
+    return cart.items.isEmpty
+        ? Center(
+            child: "Your cart is empty".text.xl4.bold.make(),
+          )
+        : ListView.builder(
+            itemCount: cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  setState(() {});
+                  cart.removeItem(
+                    cart.items[index],
+                  );
+                  setState(() {});
+                },
+              ),
+              title: cart.items[index].name.text.make(),
+            )
+            /* ItemWidget(
+              item: cart.items[index],
+            ) */
+            ,
+          );
   }
 }
