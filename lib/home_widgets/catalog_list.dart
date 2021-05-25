@@ -1,6 +1,7 @@
 import 'package:demo_ch_1/home_widgets/add_to_cart.dart';
 import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/pages/home_detail.dart';
+import 'package:demo_ch_1/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -38,12 +39,12 @@ class ListOfItem extends StatelessWidget {
               return InkWell(
                 child: CataLogItem(item: item),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomeDetails(item: item),
-                    ),
-                  );
+                  context.vxNav.push(
+                      Uri(
+                        path: MyRoutes.homeDetails,
+                        queryParameters: {"id": item.id.toString()},
+                      ),
+                      params: item);
                 },
               );
             },
