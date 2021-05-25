@@ -23,7 +23,7 @@ class HomeDetails extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: Vx.mH8,
           children: [
-            "\$${item.price}".text.red800.bold.xl4.make(),
+            "\$${item.price}".text.bold.xl4.make(),
             AddtoCart(item: item),
           ],
         ).p20(),

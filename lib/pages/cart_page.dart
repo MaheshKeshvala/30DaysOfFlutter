@@ -33,7 +33,7 @@ class CartTotal extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           VxConsumer(
-            builder: (context, _) {
+            builder: (context, _, __) {
               return "Total : \$${cart.totalPrice}"
                   .text
                   .color(context.theme.accentColor)
@@ -69,7 +69,7 @@ class CartListState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VxState.listen(context, to: [RemoveMutation]);
+    VxState.watch(context, on: [RemoveMutation]);
     return cart.items.isEmpty
         ? Center(
             child: "Your cart is empty".text.xl4.bold.make(),
