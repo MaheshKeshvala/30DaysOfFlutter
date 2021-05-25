@@ -1,18 +1,21 @@
 import 'package:demo_ch_1/models/appdata.dart';
 import 'package:demo_ch_1/models/cart.dart';
+import 'package:demo_ch_1/store/store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:vxstate/vxstate.dart';
 
 class AddtoCart extends StatelessWidget {
   final Item item;
   AddtoCart({Key key, @required this.item})
       : assert(item != null),
         super(key: key);
-  final cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
+    VxState.listen(context, to: [AddMutation]);
+    final CartModel cart = (VxState.store as MyStore).cartModel;
     bool isInCart = cart.items.contains(item) ?? false;
     return ElevatedButton(
       onPressed: () {
@@ -23,10 +26,7 @@ class AddtoCart extends StatelessWidget {
             ),
           );
         } else {
-          isInCart = isInCart.toggle();
-          final appDataModel = AppDataModel();
-          cart.appData = appDataModel;
-          cart.addItem(item);
+          AddMutation(item);
         }
       },
       child: isInCart ? Icon(Icons.done) : Icon(CupertinoIcons.cart_badge_plus),
