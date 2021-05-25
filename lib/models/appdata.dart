@@ -1,12 +1,6 @@
 import 'dart:convert';
 
 class AppDataModel {
-  static final cartmodel = AppDataModel._internal();
-
-  AppDataModel._internal();
-
-  factory AppDataModel() => cartmodel;
-
   static List<Item> items;
 
   Item getItemById(int id) =>

@@ -1,12 +1,6 @@
 import 'appdata.dart';
 
 class CartModel {
-  static final cartmodel = CartModel._internal();
-
-  CartModel._internal();
-
-  factory CartModel() => cartmodel;
-
   AppDataModel dataModel;
 
   final List<int> itemIds = [];
